@@ -4,6 +4,10 @@ import './index.css';
 
 
 ReactDOM.render(
-  React.createElement("div", {style: {color: "red"}}, React.createElement("h1", null, "hi!!")),
+  <ul>
+      <li> Hot Dogs</li>
+      <li> Hot </li>
+      <li> Hot 3</li>
+  </ul>,
   document.getElementById('root')
 );
