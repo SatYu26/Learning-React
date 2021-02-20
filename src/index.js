@@ -2,13 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-const lakeList = ["ganga", "jamuna", "saraswati"];
+const lakeList = [
+  {id: "1", name: "Echo", trailhead: "Echo"}, 
+  {id: "2", name: "ganga", trailhead: "satyam"}, 
+  {id: "3", name: "jamuna", trailhead: "damm"},
+];
 
 function App({ lakes }) {
   return (
-  <ul>
-    { lakes.map(lake => <li>{lake}</li>) }
-  </ul>
+  
+  <div>
+    {lakes.map(lake => <div>
+      <h2>{lake.name}</h2>
+      <p>Access by: {lake.trailhead}</p>
+    </div>)}
+  </div>
   );
 }
 
