@@ -12,10 +12,12 @@ function App({ lakes }) {
   return (
   
   <div>
-    {lakes.map(lake => <div>
+    {
+      lakes.map(lake => <div>
       <h2>{lake.name}</h2>
       <p>Access by: {lake.trailhead}</p>
-    </div>)}
+    </div>)
+    }
   </div>
   );
 }
