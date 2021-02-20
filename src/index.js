@@ -2,6 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
+const [first, second, third] = ["pop", "abc", "cde"];
+console.log(first);
+console.log(second);
+console.log(third);
+
 function Lake() {
   return <h1>Lake</h1>;
 }
