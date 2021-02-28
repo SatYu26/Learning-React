@@ -12,10 +12,10 @@ function Header(props) {
 function Main(props) {
   return (
     <section>
-      <p>We serve {props.adjective}</p>
+      <p>We serve the most {props.adjective} food around.</p>
       <ul style={{ textAlign: "left" }}>
         {props.dishes.map((dish) => (
-          <li>{dish}</li>
+          <li key={dish.id}>{dish.title}</li>
         ))}
       </ul>
     </section>
@@ -25,18 +25,20 @@ function Main(props) {
 function Footer({ year }) {
   return (
     <footer>
-      <h3>{year}</h3>
+      <h3>Copyright {year}</h3>
     </footer>
   );
 }
 
 const dishes = ["macaroni with cheese", "salmon", "tofu"];
 
+const dishObjects = dishes.map((dish, i) => ({ id: i, title: dish }));
+
 function App() {
   return (
     <div className="App">
       <Header name="satyam" />
-      <Main adjective="delicious" dishes={dishes} />
+      <Main adjective="delicious" dishes={dishObjects} />
       <Footer year={new Date().getFullYear()} />
     </div>
   );
