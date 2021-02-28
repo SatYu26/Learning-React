@@ -1,49 +1,16 @@
 import "./App.css";
 import React from "react";
-import restaurant from "./restaurant.jpg";
 
-function Header(props) {
-  return (
-    <header>
-      <h1>{props.name}'s Kitchen</h1>
-    </header>
-  );
+function SecretComponent() {
+  return <h1>secret info.</h1>;
 }
 
-function Main(props) {
-  return (
-    <section>
-      <p>We serve the most {props.adjective} food around.</p>
-      <img src={restaurant} height={200} alt="restaurant" />
-      <ul style={{ textAlign: "left" }}>
-        {props.dishes.map((dish) => (
-          <li key={dish.id}>{dish.title}</li>
-        ))}
-      </ul>
-    </section>
-  );
+function RegularComponent() {
+  return <h1>Regular info.</h1>;
 }
 
-function Footer({ year }) {
-  return (
-    <footer>
-      <h3>Copyright {year}</h3>
-    </footer>
-  );
-}
-
-const dishes = ["macaroni with cheese", "salmon", "tofu"];
-
-const dishObjects = dishes.map((dish, i) => ({ id: i, title: dish }));
-
-function App() {
-  return (
-    <div className="App">
-      <Header name="satyam" />
-      <Main adjective="delicious" dishes={dishObjects} />
-      <Footer year={new Date().getFullYear()} />
-    </div>
-  );
+function App(props) {
+  return <>{props.auth ? <SecretComponent /> : <RegularComponent />}</>;
 }
 
 export default App;
