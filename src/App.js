@@ -1,16 +1,30 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-function SecretComponent() {
-  return <h1>secret info.</h1>;
-}
+function App({ login }) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-function RegularComponent() {
-  return <h1>Regular info.</h1>;
-}
+  useEffect(() => {
+    if (!login) return;
+    fetch(`https://api.github.com/users/${login}`)
+      .then((response) => response.json())
+      .then(setData)
+      .then(() => setLoading(false))
+      .catch(setError);
+  }, [login]);
 
-function App(props) {
-  return <>{props.auth ? <SecretComponent /> : <RegularComponent />}</>;
+  if (loading) return <h1>Loading...</h1>;
+  if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>;
+  if (!data) return null;
+
+  return (
+    <div>
+      <h1>{data.name}</h1>
+      <p>{data.location}</p>
+    </div>
+  );
 }
 
 export default App;
